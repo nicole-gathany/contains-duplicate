@@ -1,8 +1,11 @@
 var containsDuplicate = function(nums) {
   let cache = {};
-  for (let i = 0; i < nums.length; i++) {
-    cache[nums[i]] = cache[nums[i]] + 1 || 1;
-    if (cache[nums[i]] > 1) {
+  nums.forEach(function(x) {
+    if (!cache[x]) cache[x] = 0;
+    cache[x]++;
+  });
+  for (let key in cache) {
+    if (cache[key] > 1) {
       return true;
     }
   }
